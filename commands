@@ -1,0 +1,29 @@
+-----------------------------------------------------------------------------------
+-                                    COMMANDS                                     -
+----------------------------------------------------------------------------------- 
+
+Simulate Video Streaming:
+
+ffmpeg -i ./videos/harbour_cif.y4m -f rawvideo -pixel_format yuv420p - 2>/dev/null | \
+./uvid_compress 352 288 high | \
+./uvid_decompress | \
+ffplay -f rawvideo -pixel_format yuv420p -framerate 30 -video_size 352x288  -
+
+Simulate Video Streaming with Bitrate:
+
+ffmpeg -i ./videos/harbour_cif.y4m -f rawvideo -pixel_format yuv420p - 2>/dev/null | \
+./uvid_compress 352 288 high | \
+pv | \
+./uvid_decompress | \
+ffplay -f rawvideo -pixel_format yuv420p -framerate 30 -video_size 352x288  - 2>/dev/null
+
+
+
+
+
+
+ffmpeg -i ./videos/news_cif.y4m -f rawvideo -pixel_format yuv420p - 2>/dev/null > input_video.raw
+
+./uvid_compress 352 288 high < input_video.raw > compressed.uvi
+
+./uvid_decompress < compressed.uvi > output_video.raw
