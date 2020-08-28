@@ -1,36 +1,40 @@
 ----------------------------------
-README SENG480B Assignment 5
+README video-compressor
 
-Coded by: Austin Lee - V00878834
+Coded by: Austin Lee
 Starter code provided by: B. Bird
 
 Date: 08/10/2020
 ----------------------------------
 
 -----------------------------------------------------------------------------------
+-                                     USAGE                                       -
+-----------------------------------------------------------------------------------
+
+To Compress:
+./uvid_compress  <video_width>  <video_height>  <quality_(low/medium/high)>  <  <input_video.raw>
+
+To Decompress:
+./uvid_decompress  <  <compressed_video_name>  >  <output_video.raw>
+
+-----------------------------------------------------------------------------------
 -                                     NOTES                                       -
 -----------------------------------------------------------------------------------
-This was an interesting assignment to take on. Building up to it with Assignment 4
-was definitely a 100% great idea because although it takes a little to work out
-how to do it, being able to canibalize 80% of the previous assignment's code is 
-something that many classes don't do but should since it's good to have a 
-functioning starting point and in reality we reuse code a lot. 
-Since I was in all project courses, being able to reuse it was also a godsend.
+This implementation of a video compressor and decompressor was done as a final
+project for a class at University of Victoria, under the tutelage of Professor B.
+Bird. 
 
-I thought about trying to go for B-Frames but that mind-fuckery (pardon my french)
-was too much for my time. On the plus side, Temporal and Motion Compensation make
-sense and overall, implementing them (while tedious sometimes to find the bugs), 
-wasn't too bad overall. Definitely (although very time consuming) enjoyed this
-assignment way more than A2 or A3 and although I didn't quite manage to get real-
-time streaming on medium or high like I wanted, I feel that I did well (at least
-personally) on this assignment.
+The project is broken down below, but requires a video file in the format of 
+YUV420p and takes the videos width and height, and the quality of video you wish to
+achieve. Lower quality settings do more rigorous compression and degrade it quite 
+heavily in terms of colour and some detail. 
 -----------------------------------------------------------------------------------
 -                                 IMPLEMENTATION                                  -
 -----------------------------------------------------------------------------------
     This implementation of a video compressor contains the following pipeline:
 
     The starter code, provided by B. Bird, takes raw video in YUV420p format and 
-    splits each fram into the YUVFrame format.
+    splits each frame into the YUVFrame format.
     -> The program send metadata of 3 pieces of information. The original height, 
         original width, and the quantization quality.
     -> For each frame:
