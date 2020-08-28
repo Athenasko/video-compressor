@@ -27,7 +27,14 @@ Bird.
 The project is broken down below, but requires a video file in the format of 
 YUV420p and takes the videos width and height, and the quality of video you wish to
 achieve. Lower quality settings do more rigorous compression and degrade it quite 
-heavily in terms of colour and some detail. 
+heavily in terms of colour and some detail.
+
+See the commands.txt for a series of commands (not well organized as they were
+only for self-testing) of which can be used to call ffmpeg to stream, or convert
+video into other types (such as the raw type needed for this compressor). 
+WARNING: Ensure you know the width and height of the video as it requires changing
+in the commands if it does not match the test videos used. See xiph.org for some
+test videos that have never been touched by a compressor.
 -----------------------------------------------------------------------------------
 -                                 IMPLEMENTATION                                  -
 -----------------------------------------------------------------------------------
